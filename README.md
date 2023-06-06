@@ -1,4 +1,4 @@
-# First React App - real state 
+# First React App - real estate 
 
 This project is build with react, node.js and mongodb platform.
 
