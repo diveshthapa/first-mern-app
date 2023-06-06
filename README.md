@@ -1,4 +1,4 @@
-# Getting Started with Create First React App
+# First React App - real state 
 
 This project is build with react, node.js and mongodb platform.
 
