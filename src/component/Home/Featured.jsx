@@ -59,4 +59,4 @@ const featured = () => {
     )
 }
 
-export default Featured
+export default featured
