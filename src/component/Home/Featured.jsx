@@ -37,7 +37,7 @@ const houses = [
     },
 ]
 
-const Feature = () => {
+const featured = () => {
     return (
         <div id='featured-section' className='my-5'>
             <div className='container'>
@@ -59,4 +59,4 @@ const Feature = () => {
     )
 }
 
-export default Feature
+export default Featured
