@@ -12,32 +12,32 @@ const houses = [
         country: "nepal",
         city: 'Kathmandu',
         proce: 20000,
-        image1: image1
+        image: image1
     },
     {
         id: 2,
         country: "nepal",
         city: 'Kathmandu',
         proce: 20000,
-        image2: image2
+        image: image2
     },
     {
         id: 3,
         country: "nepal",
         city: 'Kathmandu',
         proce: 20000,
-        image3: image3
+        image: image3
     },
     {
         id: 4,
         country: "nepal",
         city: 'Kathmandu',
         proce: 20000,
-        image4: image4
+        image: image4
     },
 ]
 
-const featured = () => {
+const Featured = () => {
     return (
         <div id='featured-section' className='my-5'>
             <div className='container'>
@@ -59,4 +59,4 @@ const featured = () => {
     )
 }
 
-export default featured
+export default Featured
