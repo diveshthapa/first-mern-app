@@ -26,4 +26,4 @@ const Login = () => {
     )
 }
 
-export default RegisterPage
+export default Login
