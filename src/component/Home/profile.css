@@ -1,0 +1,29 @@
+.profile-container {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    margin-top: 5rem;
+}
+
+.profile-container .image-container {
+    width: 40%;
+}
+
+.profile-container .other-container {
+    width: 50%;
+}
+
+.text-con .right-text {
+    width: 60%;
+    color: orange
+}
+
+.text-con .left-text {
+    width: 20%;
+}
+
+.text-con {
+    margin-bottom: 1rem;
+}
