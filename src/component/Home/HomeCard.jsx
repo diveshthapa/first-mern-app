@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const HomeCard = ({ home }) => {
     return (
@@ -12,7 +13,7 @@ const HomeCard = ({ home }) => {
             </div>
             <div>
                 <div className='house-btn-container text-center'>
-                    <button className='btn btn-warning'>Learn More</button>
+                    <Link className='btn btn-warning'to ='/Home'>Learn More</Link>
                 </div>
             </div>
         </div>
