@@ -1,6 +1,7 @@
 # First React App - real estate 
 
 This project is build with react, node.js and mongodb platform.
+MERN Approach
 
 ## Available Scripts
 
