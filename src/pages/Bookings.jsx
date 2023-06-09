@@ -1,6 +1,5 @@
 import React from 'react'
 import "./listing.css"
-
 import image1 from "../images/1.png"
 import image2 from "../images/2.png"
 import image3 from "../images/3.png"
@@ -38,12 +37,11 @@ const houses = [
     },
 ]
 
-const Listing = () => {
+const Bookings = () => {
   return (
     <div id ='Listing'>
        <div id='listing-search-bar' className='text-center'>
-        <input type='text' placeholder='Search any Listings'/>
-        <i class="fa fa-search" aria-hidden="true"></i>
+        <h3>My Bookings</h3>
     </div>
     <div id='houses' className='d-flex justify-content-between my-5 flex-wrap'>
                   
@@ -61,4 +59,4 @@ const Listing = () => {
   )
 }
 
-export default Listing
+export default Bookings
