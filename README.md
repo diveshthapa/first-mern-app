@@ -1,7 +1,7 @@
-# First React App - real estate 
+# First MERN App - Real Estate 
 
-This project is build with react, node.js and mongodb platform.
-MERN Approach
+This project have all for beginner fo MERN project build with React, Node.js, Express and Mongodb platform.
+
 
 ## Available Scripts
 
