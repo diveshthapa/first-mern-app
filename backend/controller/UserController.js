@@ -1,4 +1,4 @@
-const User = require("../Models/UserModel")
+const username = require("../Models/UserModel")
 const bcrypt = require("bcrypt")
 
 module.exports.sayHello = (req, res, next) => {
@@ -11,7 +11,7 @@ module.exports.register = async(req, res, next) => {
     try {
         const { fname, lname, email, username, password } = req.body;
 
-        const usernameCheck = await user.findOne({usrname})
+        const usernameCheck = await user.findOne({username})
         if( usernameCheck){
             return res.json({
                 "success":false,
