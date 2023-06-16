@@ -1,4 +1,4 @@
-const username = require("../Models/UserModel")
+const User = require("../Models/UserModel")
 const bcrypt = require("bcrypt")
 
 module.exports.sayHello = (req, res, next) => {
@@ -11,14 +11,14 @@ module.exports.register = async (req, res, next) => {
     try {
         const { fname, lname, email, username, password } = req.body;
 
-        const usernameCheck = await user.findOne({ username })
+        const usernameCheck = await User.findOne({ username })
         if (usernameCheck) {
             return res.json({
                 "success": false,
                 "msg": "Username Already Taken"
             })
         }
-        const emailCheck = await user.findOne({ email })
+        const emailCheck = await User.findOne({ email })
         if (emailCheck) {
             return res.json({
                 "success": false,
