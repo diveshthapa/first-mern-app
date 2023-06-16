@@ -1,11 +1,7 @@
 const User = require("../Models/UserModel")
 const bcrypt = require("bcrypt")
 
-module.exports.sayHello = (req, res, next) => {
-    return res.json({
-        "msg": "Demo of module exports"
-    })
-}
+
 
 module.exports.register = async (req, res, next) => {
     try {
@@ -49,4 +45,27 @@ module.exports.register = async (req, res, next) => {
             "msg": error.message
         })
     }
+}
+
+
+modues.exports.login = async(req, res) =>{
+try{
+    const { username, password} = req.body;
+    const user = await User.findOne({username})
+
+if(!user){
+    return res.json({
+        "status": false,
+        "msg": "Username or Password Invalid"
+    })
+}
+
+
+
+} catch (error) {
+    return res.json({
+        "status": false,
+        "msg": error.message
+    })
+}
 }
