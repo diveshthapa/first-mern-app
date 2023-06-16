@@ -7,41 +7,41 @@ module.exports.sayHello = (req, res, next) => {
     })
 }
 
-module.exports.register = async(req, res, next) => {
+module.exports.register = async (req, res, next) => {
     try {
         const { fname, lname, email, username, password } = req.body;
 
-        const usernameCheck = await user.findOne({username})
-        if( usernameCheck){
+        const usernameCheck = await user.findOne({ username })
+        if (usernameCheck) {
             return res.json({
-                "success":false,
+                "success": false,
                 "msg": "Username Already Taken"
             })
         }
-        const emailCheck = await user.findOne({email})
-        if( emailCheck){
+        const emailCheck = await user.findOne({ email })
+        if (emailCheck) {
             return res.json({
-                "success":false,
-                "msg": "email Adress Already in Use"
+                "success": false,
+                "msg": "Email Address Already in Use"
             })
         }
 
-const hashedPassword = await bcrypt.hash(password,10)
+        const hashedPassword = await bcrypt.hash(password, 10)
 
-const user = new User({fname, lname, username, email, password})
-user.save().then((result) => {
-    return res.json({
-        "success":true,
+        const user = new User({ fname, lname, username, email, password: hashedPassword })
+        user.save().then((result) => {
+            return res.json({
+                "success": true,
                 "msg": "User account Created",
                 user,
-    })
-})
-.catch((err)=>{
-    return res.json({
-        "success": false,
-        "msg": err,
-    })
-})
+            })
+        })
+            .catch((err) => {
+                return res.json({
+                    "success": false,
+                    "msg": err,
+                })
+            })
 
     } catch (error) {
         return res.json({
