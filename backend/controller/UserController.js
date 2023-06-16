@@ -48,24 +48,36 @@ module.exports.register = async (req, res, next) => {
 }
 
 
-modues.exports.login = async(req, res) =>{
-try{
-    const { username, password} = req.body;
-    const user = await User.findOne({username})
+modues.exports.login = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username })
 
-if(!user){
-    return res.json({
-        "status": false,
-        "msg": "Username or Password Invalid"
-    })
-}
+        if (!user) {
+            return res.json({
+                "status": false,
+                "msg": "Username or Password Invalid"
+            })
+        }
+
+        const valid = await bcrypt.compare(password, user.password)
+        if (!valid) {
+            return res.json({
+                "status": false,
+                "msg": "Username or Password Invalid"
+            })
+        }
+
+        
 
 
 
-} catch (error) {
-    return res.json({
-        "status": false,
-        "msg": error.message
-    })
-}
+
+
+    } catch (error) {
+        return res.json({
+            "status": false,
+            "msg": error.message
+        })
+    }
 }
