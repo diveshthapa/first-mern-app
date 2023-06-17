@@ -1,3 +1,6 @@
+some basic commands of mongodb.
+
+
 1. To Select a database: 
 	 use database_name
 
