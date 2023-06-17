@@ -1,0 +1,58 @@
+1. To Select a database: 
+	 use database_name
+
+2. To View Current Database:
+	 DB
+
+3. TO create a collection:
+	 db.createCollection("Collection Name")
+
+4. To view Collections:
+   show collections
+
+5. insertMany:
+   db.users.insertMany([{name:"Pratap", age:21, address:"Kathmandu"},{name:"Rujesh", age:32, address:"Bhaktapur"},{name:"Saman", age:25, address:"Chitwan"},{name:"Rajesh", age:29, address:"Dhading"},{name:"Suman", age:48, address:"Lumla"},{name:"Manish", age:88, address:"Dhading"}])
+
+6. To Find all users with name "Pratap"
+   db.users.find({name:"Pratap"})
+
+7. To get count of all users in document
+   db.users.find().count()
+
+8. db.users.updateOne({name:"Manish", address:"Dhading"},{$set:{age:50}})
+
+9. Finding document
+	 db.collection_name.find()
+
+10. Find one row
+	  db.collection_name.find({key:"value"})
+
+11. Sort rows
+	  db.collection_name.find().sort({key:1}) //1 for ascending, -1 for descending
+
+12. Count Rows
+	  db.collection_name.find().count()
+
+13. Limit rows
+	  db.collection_name.find().limit(2)
+
+14. Combining Conditions (and, or)
+		db.users.find($and:[{name:"Chirag"},{age:33}])
+
+15. Comparision Operators (gte, lte, ne)
+	  db.users.find({age:{$gte:25}})
+
+16. Update one document (set, unset, rename)
+	  db.collection_name.update({"field":"to_be_searched"}, {$set:{"field":"to_be_changed"}})
+
+17. Upserta a document
+	  db.collection_name.update({"field":"to_be_searched"}, {$set:{"field":"to_be_changed"}}, {upsert:true})
+
+18. Increment Operator $inc
+    db.users.updateMany({},{$inc:{age:2}}) //increases age of all users by 2
+
+19. Rename Operator $rename
+	  db.users.updateMany({name:"Roshan1"},{$rename:{age:"ageNumber"}})    
+
+20. Delete Row remove
+	  db.users.deleteOne({name:"Chirag"})
