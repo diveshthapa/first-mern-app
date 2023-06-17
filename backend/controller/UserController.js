@@ -1,11 +1,11 @@
-const User = require("../Models/UserModel")
+const User = require("../models/UserModel")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 
 const generateToken = (id) => {
     const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
-        "expireIn": "Id"
+        "expiresIn": "1d"
     })
     return token;
 }
@@ -36,7 +36,7 @@ module.exports.register = async (req, res, next) => {
         user.save().then((result) => {
             return res.json({
                 "success": true,
-                "msg": "User account Created",
+                "msg": "User Account Created",
                 user,
             })
         })
@@ -72,26 +72,23 @@ module.exports.login = async (req, res) => {
         if (!valid) {
             return res.json({
                 "status": false,
-                "msg": "Password Invalid"
+                "msg": "Username or Password Invalid"
             })
         }
 
         const token = generateToken({ id: user._id })
         res.cookie("token", token, {
-            "expires": new Date(date.now() + 1 * 24 * 60 * 1000),
+            "expires": new Date(date.now() + 1 * 24 * 60 * 60 * 1000),
             "httpOnly": true
         })
 
 
-
         return res.json({
             "status": true,
-            "msg": "Login successful",
+            "msg": "Login Successful",
             user,
             token
         })
-
-
 
 
     } catch (error) {
