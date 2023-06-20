@@ -98,3 +98,25 @@ module.exports.login = async (req, res) => {
         })
     }
 }
+
+module.exports.logout = async(req,res) =>{
+    try{
+        res.cookie("token", null, {
+            "expires": new Date(Date.now()),
+            "httpOnly": true
+        })
+
+
+        return res.json({
+            "status": true,
+            "msg": "Logout Successful",
+            
+        })
+
+    }catch (error) {
+        return res.json({
+            "status": false,
+            "msg": error.message
+        })
+    }
+}
