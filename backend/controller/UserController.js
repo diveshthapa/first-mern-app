@@ -78,8 +78,8 @@ module.exports.login = async (req, res) => {
 
         const token = generateToken({ id: user._id })
         res.cookie("token", token, {
-            "expires": new Date(date.now() + 1 * 24 * 60 * 60 * 1000),
-            "httpOnly": true
+            expires: new Date(date.now() + 1 * 24 * 60 * 60 * 1000),
+            httpOnly: true
         })
 
 
@@ -99,21 +99,37 @@ module.exports.login = async (req, res) => {
     }
 }
 
-module.exports.logout = async(req,res) =>{
-    try{
+module.exports.logout = async (req, res) => {
+    try {
         res.cookie("token", null, {
-            "expires": new Date(Date.now()),
-            "httpOnly": true
+            expires: new Date(Date.now()),
+            httpOnly: true
         })
 
 
         return res.json({
             "status": true,
             "msg": "Logout Successful",
-            
+
         })
 
-    }catch (error) {
+    } catch (error) {
+        return res.json({
+            "status": false,
+            "msg": error.message
+        })
+    }
+
+
+}
+module.exports.mydetails = async(req, res)=> {
+    try {
+        const user = req.user
+        return res.json({
+            "status": true,
+            user
+        })
+    } catch (error) {
         return res.json({
             "status": false,
             "msg": error.message
