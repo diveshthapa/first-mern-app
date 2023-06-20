@@ -1,4 +1,4 @@
-const {register , login, logout, mydetails } = require("../controller/UserController")
+const {register , login, logout, mydetails, updateProfile } = require("../controller/UserController")
 const { isAuthenticated, authorizedRole } = require("../middleware/auth")
 
 
@@ -9,6 +9,7 @@ router.post("/register", register)
 router.post("/login", login)
 router.post("/logout", logout)
 router.get("/me",isAuthenticated, mydetails)
+router.patch("/",isAuthenticated, updateProfile)
 
 
 

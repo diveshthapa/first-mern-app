@@ -63,16 +63,16 @@ module.exports.login = async (req, res) => {
 
         if (!user) {
             return res.json({
-                "status": false,
-                "msg": "Username or Password Invalid"
+                status: false,
+                msg: "Username or Password Invalid"
             })
         }
 
         const valid = await bcrypt.compare(password, user.password)
         if (!valid) {
             return res.json({
-                "status": false,
-                "msg": "Username or Password Invalid"
+                status: false,
+                msg: "Username or Password Invalid"
             })
         }
 
@@ -124,6 +124,26 @@ module.exports.logout = async (req, res) => {
 }
 module.exports.mydetails = async(req, res)=> {
     try {
+        const user = req.user
+        return res.json({
+            "status": true,
+            user
+        })
+    } catch (error) {
+        return res.json({
+            "status": false,
+            "msg": error.message
+        })
+    }
+}
+
+module.exports.updateProfile = async(req, res)=> {
+    try {
+        const {fname, lname} = req.body;
+        const newData = {fname, lname}
+        copnst user = await User.findByIdAndUpdate(req.user.id, newData,{
+            new:true
+        })
         const user = req.user
         return res.json({
             "status": true,
