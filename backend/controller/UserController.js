@@ -78,7 +78,7 @@ module.exports.login = async (req, res) => {
 
         const token = generateToken({ id: user._id })
         res.cookie("token", token, {
-            expires: new Date(date.now() + 1 * 24 * 60 * 60 * 1000),
+            expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
             httpOnly: true
         })
 
@@ -141,10 +141,10 @@ module.exports.updateProfile = async(req, res)=> {
     try {
         const {fname, lname} = req.body;
         const newData = {fname, lname}
-        copnst user = await User.findByIdAndUpdate(req.user.id, newData,{
+        const user = await User.findByIdAndUpdate(req.user.id, newData,{
             new:true
         })
-        const user = req.user
+        
         return res.json({
             "status": true,
             user
