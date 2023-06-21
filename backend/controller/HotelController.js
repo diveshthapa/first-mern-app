@@ -16,7 +16,7 @@ module.exports.addHotel = async (req, res) => {
         newHotel.save().then((resutl) => {
             return res.json({
                 "success": true,
-                resutl
+                result
             })
         })
             .catch((err) => {
