@@ -4,12 +4,12 @@ const hotelSchema = mongoose.Schema({
     name:{
         type:String,
         required:true,
-        minLemght:3
+        minLenght:3
     },
     City:{
         type:String,
         required:true,
-        minLemght:5
+        minLenght:5
     },
     logo:{
         type:String,
