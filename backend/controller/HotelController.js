@@ -52,3 +52,49 @@ module.exports.getAllHotels = async (req, res) => {
     }
 
 }
+
+module.exports.getHotel = async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const hotel = await Hotel.findById(id);
+        return res.json({
+            data: hotel,
+            status: true
+        });
+    } catch (error) {
+        return res.json({
+            msg: "Some Error Occured!",
+            status: false
+        });
+    }
+}
+
+
+module.exports.updateHotel = async (req, res) => {
+    try {
+        const {
+            name,
+            city,
+            country,
+            id
+        } = req.body;
+        const newData = {
+            name,
+            city,
+            country
+        }
+        const hotel = await Hotel.findByIdAndUpdate(id, newData, {
+            new: true,
+            runValidators: true
+        })
+        return res.json({
+            success: true,
+            hotel,
+        });
+    } catch (error) {
+        return res.json({
+            success: false,
+            msg: error.message,
+        });
+    }
+}
