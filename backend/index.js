@@ -12,8 +12,10 @@ app.use(morgan("dev"))
 app.use(cookieParser())
 
 const userRoute = require("./routes/UserRoute")
+const hotelRoute = require("./routes/HotelRoute")
 
 app.use("/api/user", userRoute)
+app.use("/api/hotel", hotelRoute)
 
 
 app.listen(process.env.PORT, () => {

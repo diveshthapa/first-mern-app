@@ -20,11 +20,11 @@ module.exports.addHotel = async (req, res) => {
             })
         })
             .catch((err) => {
-            return res.json({
-                "success": false,
-                "msg": error.message
+                return res.json({
+                    "success": false,
+                    "msg": error.message
+                })
             })
-        })
 
 
     } catch (error) {
@@ -33,4 +33,22 @@ module.exports.addHotel = async (req, res) => {
             "msg": error.message
         })
     }
+}
+
+module.exports.getAllHotels = async (req, res) => {
+
+    try {
+        const hotels = await Hotel.find()
+        return res.json({
+            "success": true,
+            hotels
+        })
+    } catch (error) {
+
+        return res.json({
+            "success": false,
+            "msg": error.message
+        })
+    }
+
 }
