@@ -14,7 +14,7 @@ const accomodationSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: true,
+        required: true
     },
     image: {
         type: String,
@@ -43,7 +43,7 @@ const accomodationSchema = new mongoose.Schema({
 
     hotel: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Hotel",
+        ref: "Hotel"
     }
 
 });
