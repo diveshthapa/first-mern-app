@@ -1,4 +1,4 @@
-const Booking = require("../models/BookingModel")
+const Booking = require("../models/BookingSchema")
 const Accomodation = require("../models/AccomodationModel")
 
 

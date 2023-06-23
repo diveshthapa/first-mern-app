@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-mongoose.connect("mongodb://localhost:27017/my-react-app").then(() => {
+mongoose.connect(process.env.DB_URI).then(() => {
     console.log("Database Connected successfully")
 }).catch((err) => {
     console.log(err.message)

@@ -1,5 +1,5 @@
 const Accomodation = require("../models/AccomodationModel")
-const Booking = require("../models/BookingModel")
+const Booking = require("../models/BookingSchema")
 
 
 module.exports.addAccomodation = async (req, res, next) => {
