@@ -69,7 +69,6 @@ module.exports.getHotel = async (req, res, next) => {
     }
 }
 
-
 module.exports.updateHotel = async (req, res) => {
     try {
         const {

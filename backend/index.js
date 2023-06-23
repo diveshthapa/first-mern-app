@@ -13,9 +13,11 @@ app.use(cookieParser())
 
 const userRoute = require("./routes/UserRoute")
 const hotelRoute = require("./routes/HotelRoute")
+const accomodationRoute = require("./routes/AccomodationRoute")
 
 app.use("/api/user", userRoute)
 app.use("/api/hotel", hotelRoute)
+app.use("/api/acc", accomodationRoute)
 
 
 app.listen(process.env.PORT, () => {
