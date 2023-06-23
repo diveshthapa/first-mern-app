@@ -2,6 +2,7 @@ import { combineReducers, createStore, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 
+//Reducer collection here
 const reducer = combineReducers({
 })
 let initialState = {}
