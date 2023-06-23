@@ -1,0 +1,7 @@
+For State managament
+
+##Componenet of Redux
+
+#Reducer
+#Action
+#Store
