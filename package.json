@@ -1,0 +1,13 @@
+{
+  "name": "my-react-app",
+  "version": "1.0.0",
+  "description": "This project has all for beginner MERN project build with React, Node.js, Express and Mongodb platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon backend/index.js"
+
+  },
+  "author": "",
+  "license": "ISC"
+}
