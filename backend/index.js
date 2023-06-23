@@ -3,7 +3,7 @@ const app = express()
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
 
-require("dotenv").config()
+require("dotenv").config({path: "backend/.env"})
 require("./database/connection")
 
 app.use(cookieParser())
