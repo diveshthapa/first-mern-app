@@ -8,3 +8,5 @@ For State managament
 
 
 # package for Redux
+
+npm i react-toastify redux redux-devtools-extension redux-thunk react-redux
