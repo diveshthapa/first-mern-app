@@ -8,8 +8,8 @@ import RegisterPage from './component/Home/RegisterPage';
 import Profilepage from './component/Home/Profilepage';
 import Listing from './pages/Listing';
 import Bookings from './pages/Bookings';
-import { Toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 
 function App() {
@@ -25,9 +25,10 @@ function App() {
 
       <Route path='/profilepage' element={<Profilepage/>}/>
       <Route path='/listing' element={<Listing/>}/>
+
       <Route path='/bookings' element={<Bookings/>}/>
     </Routes>
-    <ToastContainer autoClose={5000}/>
+    <ToastContainer autoClose={500}/>
     </BrowserRouter>
   );
 }
