@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes,Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { Navbar } from './component/Navbar';
 import Homepage from './pages/Homepage';
@@ -10,25 +10,36 @@ import Listing from './pages/Listing';
 import Bookings from './pages/Bookings';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
+import { useEffect } from 'react';
 
 
 function App() {
+
+
+  const { isAuthenticated, user, loading } = useSelector((state)) => state.user)
+  useEffect(() => {
+    store.dispatch(loadUser())
+  }, [])
+
+
+
+
   return (
     <BrowserRouter>
-    <Navbar/>
-    <Routes>
-      <Route path='/' element={<Homepage />}/>
-      <Route path='/acc' element={<Details />}/>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path='/acc' element={<Details />} />
 
-      <Route path='/login' element={<Login />}/>
-      <Route path='/register' element={<RegisterPage/>}/>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<RegisterPage />} />
 
-      <Route path='/profilepage' element={<Profilepage/>}/>
-      <Route path='/listing' element={<Listing/>}/>
+        <Route path='/profilepage' element={<Profilepage />} />
+        <Route path='/listing' element={<Listing />} />
 
-      <Route path='/bookings' element={<Bookings/>}/>
-    </Routes>
-    <ToastContainer autoClose={500}/>
+        <Route path='/bookings' element={<Bookings />} />
+      </Routes>
+      <ToastContainer autoClose={500} />
     </BrowserRouter>
   );
 }
