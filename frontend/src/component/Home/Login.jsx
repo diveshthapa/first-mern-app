@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./reg.css";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { login } from "../Action/userAction";
+import { login } from "../../Action/userAction";
 
 
 

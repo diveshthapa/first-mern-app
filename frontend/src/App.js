@@ -11,12 +11,14 @@ import Bookings from './pages/Bookings';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import { useEffect } from 'react';
-
+import { useSelector } from 'react-redux';
+import store from "./Store"
+import { loadUser } from './Action/userAction';
 
 function App() {
 
 
-  const { isAuthenticated, user, loading } = useSelector((state)) => state.user)
+  const { isAuthenticated, user, loading } = useSelector((state) => state.user)
   useEffect(() => {
     store.dispatch(loadUser())
   }, [])

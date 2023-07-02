@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import "./reg.css";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { register } from "../Action/userAction";
+import { register } from "../../Action/userAction";
 
 
 
