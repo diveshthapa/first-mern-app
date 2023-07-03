@@ -1,13 +1,24 @@
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import "./reg.css";
 import { toast } from "react-toastify";
-import { useState } from "react";
-import { register } from "../../Action/userAction";
+import { useEffect, useState } from "react";
+import { register } from "../Action/userAction";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const RegisterPage = () => {
+
+    const { isAuthenticated } = useSelector((state) => state.user)
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/")
+        }
+    }, [isAuthenticated])
+
     const dispatch = useDispatch();
 
 
