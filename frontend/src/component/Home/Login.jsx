@@ -1,13 +1,26 @@
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import "./reg.css";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { login } from "../../Action/userAction";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../Action/userAction";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const LoginPage = () => {
+
+    const { isAuthenticated } = useSelector((state) => state.user)
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/")
+        }
+    }, [isAuthenticated])
+
+
+
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
