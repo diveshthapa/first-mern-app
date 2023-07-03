@@ -1,19 +1,21 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Navbar } from './component/Navbar';
+import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
-import Details from './component/Home/Details';
-import Login from './component/Home/Login';
-import RegisterPage from './component/Home/RegisterPage';
-import Profilepage from './component/Home/Profilepage';
-import Listing from './pages/Listing';
+import Details from './components/Home/Details';
+import RegisterPage from './pages/Register';
+import LoginPage from './pages/Login';
+import ProfilePage from './pages/Profilepage';
+import Listings from './pages/Listings';
 import Bookings from './pages/Bookings';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import { useEffect } from 'react';
+
 import { useSelector } from 'react-redux';
-import store from "./Store"
 import { loadUser } from './Action/userAction';
+import store from './Store';
 
 function App() {
 
@@ -25,19 +27,18 @@ function App() {
 
 
 
-
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar isAuthenticated={isAuthenticated} user={user} />
       <Routes>
         <Route path='/' element={<Homepage />} />
-        <Route path='/acc' element={<Details />} />
+        <Route path='/acc/:id' element={<Details />} />
 
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
 
-        <Route path='/profilepage' element={<Profilepage />} />
-        <Route path='/listing' element={<Listing />} />
+        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/listings' element={<Listings />} />
 
         <Route path='/bookings' element={<Bookings />} />
       </Routes>
