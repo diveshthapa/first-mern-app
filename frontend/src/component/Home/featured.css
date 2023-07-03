@@ -1,25 +1,30 @@
-.homeCard{
-width: 22%;
+.homeCard {
+    width: 22%;
+    height: 300px;
 }
 
-.house-image-container img{
+.house-image-container {
+    height: 100%;
+}
+
+.house-image-container img {
     width: 100%;
     border-radius: 20px;
+    height: 100%;
 }
 
-.house-text-container h4{
-    font-size: 1.4 rempx;
+.house-text-container h4 {
     font-weight: 600;
+    font-size: 1.4rem;
     line-height: 29px;
-    letter-spacing: 0.04 rem;
-    margin-bottom:0;
+    letter-spacing: 0.04em;
+    margin-bottom: 0;
 }
 
-.house-text-container p{
+.house-text-container p {
+    font-weight: 400;
     font-size: 16px;
-    font-weight: 600;
-    line-height: 29px;
-    letter-spacing: 0.04 rem;
-    margin-bottom:0;
-
+    line-height: 19px;
+    letter-spacing: 0.04em;
+    color: #036FD4;
 }
