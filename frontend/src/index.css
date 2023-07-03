@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+#profileImageNav button:active,
+#profileImageNav button:focus,
+#profileImageNav a:focus,
+#profileImageNav a:active,
+#profileImageNav a:focus,
+.show,
+.dropdown-toggle,
+#profileImageNav a:active {
+  outline: none;
+  border: none;
+}
