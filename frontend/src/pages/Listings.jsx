@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./listing.css"
-import HomeCard from '../components/Home/HomeCard'
+import HomeCard from '../component/Home/HomeCard'
 import image1 from "../images/1.png"
 import image2 from "../images/2.png"
 import image3 from "../images/3.png"
@@ -15,28 +15,28 @@ const houses = [
         id: 1,
         country: "Nepal",
         city: "Kathmandu",
-        price: 20000,
+        price: 50000,
         image: image1
     },
     {
         id: 2,
         country: "Nepal",
-        city: "Kathmandu",
+        city: "Lalitpur",
         price: 20000,
         image: image2
     },
     {
         id: 3,
         country: "Nepal",
-        city: "Kathmandu",
-        price: 20000,
+        city: "Chitwan",
+        price: 30000,
         image: image3
     },
     {
         id: 4,
         country: "Nepal",
-        city: "Kathmandu",
-        price: 20000,
+        city: "Pokhara",
+        price: 40000,
         image: image4
     },
 ]
