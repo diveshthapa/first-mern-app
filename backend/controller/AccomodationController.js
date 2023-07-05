@@ -1,5 +1,5 @@
 const Accomodation = require("../models/AccomodationModel")
-const Booking = require("../models/BookingSchema")
+const Booking = require("../models/BookingModel")
 
 
 module.exports.addAccomodation = async (req, res, next) => {
@@ -87,7 +87,8 @@ module.exports.getAccomodation = async (req, res, next) => {
         return res.json({
             data: accomodation,
             "success": true,
-            stat
+            stat,
+            valid
         });
     } catch (error) {
         console.log(error)
