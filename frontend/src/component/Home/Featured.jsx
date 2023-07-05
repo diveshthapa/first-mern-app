@@ -16,8 +16,9 @@ const Featured = () => {
 
     const loadFeatured = async () => {
         const { data } = await axios.get("/api/acc/all", config)
-        setFeat(data.data.slice(4))
+        setFeat(data.data)
         setLoading(false)
+        console.log(data)
     }
 
 

@@ -20,18 +20,37 @@ const Navbar = ({ isAuthenticated, user }) => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav m-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link " aria-current="page" to="/">Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/listings">Listings</Link>
-                        </li>
+                    {
+                        isAuthenticated && user.type == "user" ? (
+                            <ul className="navbar-nav m-auto">
+                                <li className="nav-item">
+                                    <Link className="nav-link " aria-current="page" to="/">Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/listings">Listings</Link>
+                                </li>
 
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">About</a>
-                        </li>
-                    </ul>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">About</a>
+                                </li>
+                            </ul>
+                        ) : (
+                            <ul className="navbar-nav m-auto">
+                                <li className="nav-item">
+                                    <Link className="nav-link " aria-current="page" to="/admin/user">Users</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/admin/hotel">Hotels</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/admin/accomodation">Accomodations</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/admin/booking">Bookings</Link>
+                                </li>
+                            </ul>
+                        )}
+
 
                     {
                         isAuthenticated ? (

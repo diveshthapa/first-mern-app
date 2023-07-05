@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./reg.css";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../Action/userAction";
+import { login } from "../../Action/userAction";
 import { useNavigate } from "react-router-dom";
 
 

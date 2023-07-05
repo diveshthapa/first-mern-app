@@ -5,8 +5,8 @@ import { Button, Modal } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
 import { toast} from "react-toastify"
 import axios from "axios"
-import { config } from "../Constants/const"
-import{loadUser} from"../Action/userAction"
+import { config } from "../../Constants/const"
+import{loadUser} from"../../Action/userAction"
 
 
 const ProfilePage = () => {
