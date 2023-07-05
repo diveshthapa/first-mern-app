@@ -1,4 +1,4 @@
-const Booking = require("../models/BookingSchema")
+const Booking = require("../models/BookingModel")
 const Accomodation = require("../models/AccomodationModel")
 
 
@@ -18,6 +18,7 @@ module.exports.addBooking = async (req, res, next) => {
             accomodation,
         });
 
+
         if (check) {
             return res.json({
                 error: "Verification Failed! Booking Already Exists!",
@@ -35,7 +36,8 @@ module.exports.addBooking = async (req, res, next) => {
         booking.save().then((data) => {
             return res.json({
                 "success": true,
-                data: data
+                data: data,
+
             })
         })
             .catch((e) => {
