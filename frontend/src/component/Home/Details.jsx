@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import "./details.css"
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { config } from '../../Constants/const'
+import { useSelector } from 'react-redux'
+import{toast} from "react-toastify"
 
 
 const Details = () => {
@@ -11,15 +13,40 @@ const Details = () => {
     const [loading, setLoading] = useState(true)
     const url = `/api/acc/${id}`
 
+    const { isAuthenticated } = useSelector((state) => state.user)
+
     const getData = async () => {
         const { data } = await axios.get(url, config)
         setDetails(data.data)
         setLoading(false)
-        console.log(details)
+        setValid(data.valid)
     }
     useEffect(() => {
         getData()
     }, [])
+
+
+    const [checkin, setCheckin] = useState("")
+    const [checkout, setCheckout] = useState("")
+    const [valid, setValid] = useState(true)
+
+    const handleBook = async (e) => {
+        e.preventDefault()
+        if (checkin === "" || checkout === "") {
+            return toast.warn("Fields Cannot be empty")
+        }
+
+        const { data } = await axios.post("/api/book/add",
+            { checkin, checkout, accomodation: id }, config)
+
+        if (data.success) {
+            getData()
+            toast.success("The Accomodation is booked successfully!")
+        }
+        else {
+            toast.error("Booking Failed")
+        }
+    }
 
 
     return loading ? (
@@ -100,13 +127,23 @@ const Details = () => {
                     </div >
                     <div className="right-section border border-2 border-warning p-3">
                         <div className="img-container">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Hyatt_Regency_Danang%2C_Corporate_logo%2C_March_2014.png" alt="Logo" className='img-fluid' />
+                            <img src={details.hotel.logo} alt="Logo" className='img-fluid' />
                         </div>
                         <form >
-                            <input type="date" name="checkin" id="checkin" />
-                            <input type="date" name="checkout" id="checkout" />
+                            <input type="date" name="checkin" id="checkin" onChange={(e) => setCheckin(e.target.value)} />
+                            <input type="date" name="checkout" id="checkout" onChange={(e) => setCheckout(e.target.value)} />
                             <div className="btn-container d-flex justify-content-center">
-                                <button className='btn btn-warning btn-md px-4 mb-2' >Book</button>
+                                {
+                                    isAuthenticated ? (
+                                        valid ? (
+                                            <button className='btn btn-warning btn-md px-4 mb-2' onClick={handleBook}>Book</button>
+                                        ) : (
+                                            <button className='btn btn-success btn-md px-4 mb-2' disabled>Booked</button>
+                                        )
+                                    ) : (
+                                        <Link className='btn btn-warning btn-md px-4 mb-2' to="/login">Login</Link>
+                                    )
+                                }
                             </div>
                         </form>
                     </div>
