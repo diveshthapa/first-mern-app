@@ -10,7 +10,6 @@ const generateToken = (id) => {
     return token;
 }
 
-
 module.exports.register = async (req, res, next) => {
     try {
         const { fname, lname, email, username, password } = req.body;
@@ -54,7 +53,6 @@ module.exports.register = async (req, res, next) => {
         })
     }
 }
-
 
 module.exports.login = async (req, res) => {
     try {
@@ -122,7 +120,7 @@ module.exports.logout = async (req, res) => {
 
 
 }
-module.exports.mydetails = async(req, res)=> {
+module.exports.mydetails = async (req, res) => {
     try {
         const user = req.user
         return res.json({
@@ -137,14 +135,9 @@ module.exports.mydetails = async(req, res)=> {
     }
 }
 
-module.exports.updateProfile = async(req, res)=> {
+module.exports.allUsers = async (req, res) => {
     try {
-        const {fname, lname} = req.body;
-        const newData = {fname, lname}
-        const user = await User.findByIdAndUpdate(req.user.id, newData,{
-            new:true
-        })
-        
+        const user = req.user
         return res.json({
             "status": true,
             user
@@ -152,6 +145,65 @@ module.exports.updateProfile = async(req, res)=> {
     } catch (error) {
         return res.json({
             "status": false,
+            "msg": error.message
+        })
+    }
+}
+module.exports.updateProfile = async (req, res) => {
+    try {
+        const { fname, lname } = req.body;
+        const newData = { fname, lname }
+        const user = await User.findByIdAndUpdate(req.user.id, newData, {
+            new: true
+        })
+
+        return res.json({
+            "status": true,
+            user
+        })
+    } catch (error) {
+        return res.json({
+            "status": false,
+            "msg": error.message
+        })
+    }
+}
+
+module.exports.upgradeUser = async (req, res) => {
+    try {
+        const { id } = req.body;
+        const user = await User.findById(id);
+        if (user.type == "admin") {
+            user.type = "user"
+        }
+        else {
+            user.type = "admin"
+        }
+        user.save()
+        return res.json({
+            "success": true,
+            "msg": "Updated Successfully"
+        })
+    } catch (error) {
+        return res.json({
+            "success": false,
+            "msg": error.message
+        })
+    }
+}
+
+module.exports.deleteUser = async (req, res) => {
+    try {
+        const { id } = req.body
+        await User.findByIdandDelete(id);
+
+        return res.json({
+            "success": true,
+            "msg": "User Deleted"
+        })
+    } catch (error) {
+        return res.json({
+            "success": false,
             "msg": error.message
         })
     }

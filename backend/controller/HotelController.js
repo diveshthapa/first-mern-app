@@ -16,13 +16,13 @@ module.exports.addHotel = async (req, res) => {
         newHotel.save().then((resutl) => {
             return res.json({
                 "success": true,
-                result
+                resutl
             })
         })
             .catch((err) => {
                 return res.json({
                     "success": false,
-                    "msg": error.message
+                    "msg": err.message
                 })
             })
 
