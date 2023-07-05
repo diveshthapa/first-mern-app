@@ -1,4 +1,4 @@
-const { addAccomodation, getAllAccomodations, getAccomodation, updateAccomodation } = required("../controller/AccomodationController")
+const { addAccomodation, getAllAccomodations, getAccomodation, updateAccomodation } = require("../controller/AccomodationController")
 const { isAuthenticated, authorizedRole } = require("../middleware/auth")
 
 const router = require("express").Router()
