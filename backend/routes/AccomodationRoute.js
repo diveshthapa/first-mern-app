@@ -6,6 +6,6 @@ const router = require("express").Router()
 router.post("/add", isAuthenticated, addAccomodation)
 router.get("/all", getAllAccomodations)
 router.get("/:id", allowBoth, getAccomodation)
-router.patch("/:id", isAuthenticated, updateAccomodation)
+router.patch("/", isAuthenticated, updateAccomodation)
 
 module.exports = router
