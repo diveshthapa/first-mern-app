@@ -27,7 +27,7 @@ module.exports.addHotel = [
                 })
             }
 
-            const newHotel = new Hotel({ name, city, country })
+            const newHotel = new Hotel({ name, city, country, logo:req.file.path })
             newHotel.save().then((resutl) => {
                 return res.json({
                     "success": true,
