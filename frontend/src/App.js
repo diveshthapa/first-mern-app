@@ -12,11 +12,13 @@ import Bookings from './pages/Bookings';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import { useEffect } from 'react';
+
 import { useSelector } from 'react-redux';
 import { loadUser } from './Action/userAction';
 import store from './Store';
 import User from './component/Admin/User';
 import Hotels from './component/Admin/Hotel'
+import Accomodations from './component/Admin/'
 
 function App() {
 
@@ -45,6 +47,7 @@ function App() {
         
         <Route path='/admin/user' element={<User />} />
         <Route path='/admin/hotel' element={<Hotels />} />
+        <Route path='/admin/accomodation' element={<Accomodations />} />
       </Routes>
       <ToastContainer autoClose={500} />
     </BrowserRouter>
