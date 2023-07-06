@@ -1,18 +1,25 @@
-.navabar-brand{
-  font-weight:700;
+.navabar-brand {
+  font-weight: 700;
   font-size: 1.8 rem;
   color: white;
 
 }
-.colored-text{
+
+.colored-text {
   color: red;
 }
-.nav-link{
-  font-weight:600;
+
+.nav-link {
+  font-weight: 600;
   font-size: 1.2 rem;
   margin-left: 0.5 rem;
   color: white;
 }
-.navbar{
+
+.navbar {
   background: #10375c !important;
+}
+
+.lim-width {
+  width: 45% !important;
 }
