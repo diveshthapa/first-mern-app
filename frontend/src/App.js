@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux';
 import { loadUser } from './Action/userAction';
 import store from './Store';
 import User from './component/Admin/User';
-import Hotels from'./component/Admin/
+import Hotels from './component/Admin/Hotel'
 
 function App() {
 
