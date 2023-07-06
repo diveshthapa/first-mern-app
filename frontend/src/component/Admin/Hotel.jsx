@@ -2,8 +2,65 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { config } from '../../Constants/const'
 import { toast } from 'react-toastify'
+import { Button, Modal } from 'react-bootstrap'
+
+const config1 = {
+    headers: {
+        "Content-Type": "multipart/form-data"
+    }
+};
+
+
 
 const Hotels = () => {
+
+    const [show, setShow] = useState(false)
+
+    const hideModal = () => setShow(false)
+    const showModal = () => setShow(true)
+
+
+    const [id, setId] = useState("")
+    const [name, setName] = useState("")
+    const [country, setCountry] = useState("")
+    const [city, setCity] = useState("")
+    const [logo, setLogo] = useState("")
+
+
+    const handleFileChange = (event) => {
+        setLogo(event.target.files);
+        console.log(logo)
+    }
+
+
+    const handleAdd = async () => {
+
+        if (name == "" || country == "" || city == "" || logo == "") {
+            return toast.warn("All Fields are Required")
+        }
+
+        const formData = new FormData()
+        formData.append("name", name)
+        formData.append("country", country)
+        formData.append("city", city)
+        formData.append("logo", logo[0])
+
+
+        const { data } = await axios.post("/api/hotel/add", formData, config1)
+        if (data.success) {
+            toast.success("Hotel Added Successfully")
+        }
+        else {
+            toast.error("Some Error Occured")
+        }
+
+    }
+
+
+
+
+
+
     useEffect(() => {
         getHotels()
     }, [])
@@ -32,7 +89,12 @@ const Hotels = () => {
     }
     return (
         <div>
-            <h3 className='text-center my-3'><span className='colored-text'>Users</span> of MiCasa</h3>
+            <div className="d-flex container justify-content-between my-3">
+                <h3 className='text-center'><span className='colored-text'>Hotels</span> of MiCasa</h3>
+                <button className='btn btn-success btn-md' onClick={showModal}>Add Hotel</button>
+            </div>
+
+
             <table class="table table-dark table-striped ">
                 <thead>
                     <tr>
@@ -71,6 +133,46 @@ const Hotels = () => {
 
                 </tbody>
             </table>
+
+
+            <Modal
+                show={show}
+                onHide={hideModal}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Update Profile</Modal.Title>
+                </Modal.Header>
+                <form method="post">
+                    <Modal.Body>
+                        <div className="inp-container">
+                            <input type="text" name='Name' id="Name" placeholder='Name' value={name} required onChange={(e) => setName(e.target.value)} />
+                        </div>
+                        <div className="inp-container">
+                            <input type="text" name='country' id="country" placeholder='Country' required value={country} onChange={(e) => setCountry(e.target.value)} />
+                        </div>
+                        <div className="inp-container">
+                            <input type="text" name='city' id="city" placeholder='City' required value={city} onChange={(e) => setCity(e.target.value)} />
+                        </div>
+                        <div className="inp-container">
+
+                            <label for="logo">Update Logo
+                            </label>
+                            <input type="file" name='logo' id="logo" required onChange={handleFileChange} className="d-none" />
+
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={hideModal}>
+                            Close
+                        </Button>
+                        <Button variant="primary" >Add Hotel</Button>
+                    </Modal.Footer>
+                </form>
+            </Modal>
+
+
         </div>
     )
 }

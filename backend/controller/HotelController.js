@@ -1,39 +1,54 @@
 const Hotel = require("../models/HotelModel")
+const multer = require('multer')
 
-module.exports.addHotel = async (req, res) => {
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'backend/uploads/logo')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, `${uniqueSuffix}-${file.originalname}`)
+    }
+})
 
-    try {
-        const { name, city, country } = req.body;
-        const usedHotelName = await Hotel.findOne({ name })
-        if (usedHotelName) {
-            return res.json({
-                "success": false,
-                "msg": " Hotel with this name already exists"
-            })
-        }
+const upload = multer({ storage: storage })
 
-        const newHotel = new Hotel({ name, city, country })
-        newHotel.save().then((resutl) => {
-            return res.json({
-                "success": true,
-                resutl
-            })
-        })
-            .catch((err) => {
+module.exports.addHotel = [
+    upload.single("logo"),
+    async (req, res) => {
+
+        try {
+            const { name, city, country } = req.body;
+            const usedHotelName = await Hotel.findOne({ name })
+            if (usedHotelName) {
                 return res.json({
                     "success": false,
-                    "msg": err.message
+                    "msg": " Hotel with this name already exists"
+                })
+            }
+
+            const newHotel = new Hotel({ name, city, country })
+            newHotel.save().then((resutl) => {
+                return res.json({
+                    "success": true,
+                    resutl
                 })
             })
+                .catch((err) => {
+                    return res.json({
+                        "success": false,
+                        "msg": err.message
+                    })
+                })
 
 
-    } catch (error) {
-        return res.json({
-            "success": false,
-            "msg": error.message
-        })
-    }
-}
+        } catch (error) {
+            return res.json({
+                "success": false,
+                "msg": error.message
+            })
+        }
+    }]
 
 module.exports.getAllHotels = async (req, res) => {
 
