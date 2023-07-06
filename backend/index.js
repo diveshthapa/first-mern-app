@@ -19,7 +19,8 @@ app.use("/api/user", userRoute)
 app.use("/api/hotel", hotelRoute)
 app.use("/api/acc", accomodationRoute)
 app.use("/api/book", bookingRoute)
-
+app.use(express.urlencoded({extended:false}))
+app.use("/backend/uploads",express.static("backend/uploads"))
 
 app.listen(process.env.PORT, () => {
     console.log(`Server has started in port ${process.env.PORT}`)
