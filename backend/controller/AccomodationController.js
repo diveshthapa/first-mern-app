@@ -1,8 +1,26 @@
+const multer = require("multer")
 const Accomodation = require("../models/AccomodationModel")
 const Booking = require("../models/BookingSchema")
 
 
-module.exports.addAccomodation = async (req, res, next) => {
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'backend/uploads/accomodation')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, `${uniqueSuffix}-${file.originalname}`)
+    }
+})
+
+const upload = multer({ storage: storage })
+
+
+
+
+module.exports.addAccomodation = [upload.single("image"), async (req, res, next) => {
+    console.log(req.body)
+    console.log(req.file)
     try {
 
         const {
@@ -13,7 +31,8 @@ module.exports.addAccomodation = async (req, res, next) => {
             pickup,
             allServices,
             telephone,
-            hotel
+            hotel,
+            cons
 
         } = req.body;
 
@@ -25,7 +44,9 @@ module.exports.addAccomodation = async (req, res, next) => {
             pickup,
             allServices,
             telephone,
-            hotel
+            hotel,
+            cons,
+            image: req.file.path
         })
 
         accomodation.save().then((data) => {
@@ -47,7 +68,7 @@ module.exports.addAccomodation = async (req, res, next) => {
             "success": false
         });
     }
-}
+}]
 
 
 module.exports.getAllAccomodations = async (req, res, next) => {
@@ -100,25 +121,34 @@ module.exports.getAccomodation = async (req, res, next) => {
 }
 
 
-module.exports.updateAccomodation = async (req, res, next) => {
+module.exports.updateAccomodation = [upload.single("image"), async (req, res, next) => {
     try {
         const {
+            id,
+            name,
             desc,
             price,
             wifi,
             pickup,
             allServices,
             telephone,
+            cons
         } = req.body;
+        console.log(req.body.id)
         const newData = {
+            name,
             desc,
             price,
             wifi,
             pickup,
             allServices,
             telephone,
+            cons
         }
-        const id = req.params.id;
+        if (req.file) {
+            newData.image = req.file.path
+        }
+
         const accomodation = await Accomodation.findByIdAndUpdate(id, newData, {
             new: true,
             runValidators: true
@@ -133,4 +163,4 @@ module.exports.updateAccomodation = async (req, res, next) => {
             msg: error.message,
         });
     }
-}
+}]
