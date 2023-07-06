@@ -18,7 +18,8 @@
 
 }
 
-.inp-container input {
+.inp-container input,
+.inp-container textarea {
     padding: 0.5rem 1rem;
     margin: auto;
     border-radius: 1rem;
@@ -35,6 +36,7 @@
     width: 90%;
     margin: auto;
     margin-bottom: 2rem;
+    display: flex;
 }
 
 .search-container {
