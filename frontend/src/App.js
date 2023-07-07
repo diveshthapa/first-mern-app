@@ -44,10 +44,12 @@ function App() {
         <Route path='/listings' element={<Listings />} />
 
         <Route path='/bookings' element={<Bookings />} />
-        
+
         <Route path='/admin/user' element={<User />} />
         <Route path='/admin/hotel' element={<Hotels />} />
         <Route path='/admin/accomodation' element={<Accomodations />} />
+        <Route path='/admin/booking' element={<booking />} />
+
       </Routes>
       <ToastContainer autoClose={500} />
     </BrowserRouter>
