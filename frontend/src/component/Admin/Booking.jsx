@@ -15,7 +15,7 @@ const Booking = () => {
         if (!data.success) {
             toast.error("Some Error Occured")
         }
-        setUsers(data.users)
+        setUsers(data.data)
         setLoading(false)
     }
 
@@ -56,6 +56,8 @@ const Booking = () => {
                             </tr>
                         ) : (
                             users.map((i) => {
+                                i.checkin = new (i.checkin).toLocaldateString()
+                                i.checkout = new (i.checkout).toLocaldateString()
                                 return <tr>
                                     <td>{i.user.username}</td>
                                     <td>{i.accomodation.name}</td>

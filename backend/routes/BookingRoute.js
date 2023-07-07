@@ -7,6 +7,6 @@ router.get("/all", getAllBookings)
 router.route("/my").get(isAuthenticated, getMyBookings)
 router.route("/add").post(isAuthenticated, addBooking)
 router.get("/:id", getBooking)
-router.route("/:id").patch(isAuthenticated, updateBooking)
+router.route("/").patch(isAuthenticated, updateBooking)
 
 module.exports = router
