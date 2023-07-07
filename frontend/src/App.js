@@ -18,7 +18,7 @@ import { loadUser } from './Action/userAction';
 import store from './Store';
 import User from './component/Admin/User';
 import Hotels from './component/Admin/Hotel'
-import Accomodations from './component/Admin/'
+import Accomodations from './component/Admin/Accomodations'
 
 function App() {
 
