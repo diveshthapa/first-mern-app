@@ -1,18 +1,18 @@
 .navabar-brand {
   font-weight: 700;
-  font-size: 1.8 rem;
+  font-size: 1.8rem;
   color: white;
 
 }
 
 .colored-text {
-  color: red;
+  color: #FF5722;
 }
 
 .nav-link {
   font-weight: 600;
-  font-size: 1.2 rem;
-  margin-left: 0.5 rem;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
   color: white;
 }
 
