@@ -14,7 +14,7 @@ const Navbar = ({ isAuthenticated, user }) => {
     return (
         <nav className="navbar navbar-expand-lg ">
             <div className="container">
-                <Link className="navbar-brand" to="/"> Mi<span className='colored-text'>Casa</span> </Link>
+                <Link className="navbar-brand" to="/"> RealState <span className='colored-text'>World</span> </Link>
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

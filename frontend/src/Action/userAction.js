@@ -15,7 +15,7 @@ export const login = (username, password) => async (dispatch) => {
         console.log(data)
         if (data.status) {
             dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
-            toast.success("Welcome To MiCasa")
+            toast.success("Welcome To RealState World")
         }
         else {
             toast.error(data.msg)
