@@ -3,19 +3,19 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    padding: 14 rem 0;
+    padding: 14rem 0;
 }
 
 #hero-text-container h3{
-    font-size: 2.3 rem;
+    font-size: 2.3rem;
     font-weight: 700;
 }
 #hero-text-container p{
-    font-size: 1.1 rem;
+    font-size: 1.1rem;
 }
 #hero-text-conatiner h6{
     color: orange;
     cursor: pointer;
     font-weight: 700;
-    font-size: 1.1 rem;
+    font-size: 1.1rem;
 }

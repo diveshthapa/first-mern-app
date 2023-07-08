@@ -48,7 +48,7 @@ function App() {
         <Route path='/admin/user' element={<User />} />
         <Route path='/admin/hotel' element={<Hotels />} />
         <Route path='/admin/accomodation' element={<Accomodations />} />
-        <Route path='/admin/booking' element={<booking />} />
+        <Route path='/admin/booking' element={<Bookings />} />
 
       </Routes>
       <ToastContainer autoClose={500} />
